@@ -6,7 +6,6 @@ import requests
 from sheet import SquadSheet
 from twitter import send_message
 
-bnb_price = requests.get("https://coinograph.io/ticker/?symbol=binance:bnbusdt").json()["price"]
 bsc = "https://bsc-dataseed.binance.org"
 web3 = Web3(Web3.HTTPProvider(bsc))
 
@@ -28,6 +27,7 @@ def handle_event(event):
         buyer = ev["args"]["buyer"]
         txnHash = ev["transactionHash"]
         token_id = ev['args']['tokenId']
+        bnb_price = requests.get("https://coinograph.io/ticker/?symbol=binance:bnbusdt").json()["price"]
         priceInUsdt = price * bnb_price
         print("BUNNY BOUGHT BY ", buyer," FOR " , price, " BNB (", priceInUsdt, "$ ) --> ", txnHash)
         print("----------------")
