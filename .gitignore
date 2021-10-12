@@ -128,4 +128,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-./app/creds_drive.py
+/app/creds_drive.py
